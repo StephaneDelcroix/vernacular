@@ -1,3 +1,8 @@
+This is the MSO branch
+======================
+It contains fixes and additions we can't/don't want to push upstream
+
+
 Vernacular
 ==========
 
