@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vernacular.Potato", "Vernac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vernacular.Test", "Vernacular.Test\Vernacular.Test.csproj", "{3D090372-7612-4777-A208-F8CDE3612738}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vernacular.Catalog.Silverlight", "Vernacular.Catalog.Silverlight\Vernacular.Catalog.Silverlight.csproj", "{64C1D45F-430B-4E62-BC9B-B3BAA26FE32D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{3D090372-7612-4777-A208-F8CDE3612738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3D090372-7612-4777-A208-F8CDE3612738}.Test|Any CPU.ActiveCfg = Test|Any CPU
 		{3D090372-7612-4777-A208-F8CDE3612738}.Test|Any CPU.Build.0 = Test|Any CPU
+		{64C1D45F-430B-4E62-BC9B-B3BAA26FE32D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64C1D45F-430B-4E62-BC9B-B3BAA26FE32D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64C1D45F-430B-4E62-BC9B-B3BAA26FE32D}.Test|Any CPU.ActiveCfg = Release|Any CPU
+		{64C1D45F-430B-4E62-BC9B-B3BAA26FE32D}.Test|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
