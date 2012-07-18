@@ -53,22 +53,22 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\vernacular\Vernacular.Catalog\Vernacular.Xaml\Catalog.cs">
+    <Compile Include="..\Vernacular.Catalog\Vernacular.Xaml\Catalog.cs">
       <Link>Vernacular.Xaml\Catalog.cs</Link>
     </Compile>
-    <Compile Include="..\..\vernacular\Vernacular.Catalog\Vernacular\Catalog.cs">
+    <Compile Include="..\Vernacular.Catalog\Vernacular\Catalog.cs">
       <Link>Vernacular\Catalog.cs</Link>
     </Compile>
-    <Compile Include="..\..\vernacular\Vernacular.Catalog\Vernacular\LanguageGender.cs">
+    <Compile Include="..\Vernacular.Catalog\Vernacular\LanguageGender.cs">
       <Link>Vernacular\LanguageGender.cs</Link>
     </Compile>
-    <Compile Include="..\..\vernacular\Vernacular.Catalog\Vernacular\PluralRules.cs">
+    <Compile Include="..\Vernacular.Catalog\Vernacular\PluralRules.cs">
       <Link>Vernacular\PluralRules.cs</Link>
     </Compile>
-    <Compile Include="..\..\vernacular\Vernacular.Catalog\Vernacular\ResourceCatalog.cs">
+    <Compile Include="..\Vernacular.Catalog\Vernacular\ResourceCatalog.cs">
       <Link>Vernacular\ResourceCatalog.cs</Link>
     </Compile>
-    <Compile Include="..\..\vernacular\Vernacular.Catalog\Vernacular\ResourceIdType.cs">
+    <Compile Include="..\Vernacular.Catalog\Vernacular\ResourceIdType.cs">
       <Link>Vernacular\ResourceIdType.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
