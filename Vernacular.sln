@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vernacular.Catalog.Silverli
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libhunspell", "hunspell-1.3.2\src\win_api\libhunspell.vcxproj", "{53609BB3-D874-465C-AF7B-DF626DB0D89B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vernacular.Generators", "Vernacular.Generators\Vernacular.Generators.csproj", "{F666EB1E-04CC-44F7-965F-66C245FB3E3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,16 @@ Global
 		{53609BB3-D874-465C-AF7B-DF626DB0D89B}.Test|Mixed Platforms.Build.0 = Release|Win32
 		{53609BB3-D874-465C-AF7B-DF626DB0D89B}.Test|Win32.ActiveCfg = Release|Win32
 		{53609BB3-D874-465C-AF7B-DF626DB0D89B}.Test|Win32.Build.0 = Release|Win32
+		{F666EB1E-04CC-44F7-965F-66C245FB3E3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F666EB1E-04CC-44F7-965F-66C245FB3E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F666EB1E-04CC-44F7-965F-66C245FB3E3A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F666EB1E-04CC-44F7-965F-66C245FB3E3A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F666EB1E-04CC-44F7-965F-66C245FB3E3A}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{F666EB1E-04CC-44F7-965F-66C245FB3E3A}.Test|Any CPU.ActiveCfg = Release|Any CPU
+		{F666EB1E-04CC-44F7-965F-66C245FB3E3A}.Test|Any CPU.Build.0 = Release|Any CPU
+		{F666EB1E-04CC-44F7-965F-66C245FB3E3A}.Test|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F666EB1E-04CC-44F7-965F-66C245FB3E3A}.Test|Mixed Platforms.Build.0 = Release|Any CPU
+		{F666EB1E-04CC-44F7-965F-66C245FB3E3A}.Test|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
