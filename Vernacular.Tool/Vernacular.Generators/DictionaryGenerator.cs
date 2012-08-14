@@ -28,6 +28,9 @@ namespace Vernacular.Generators
 {
     public class DictionaryGenerator : Generator
     {
+        public string Namespace { get; set; }
+        public string ClassName { get; set; }
+
         protected override void Generate()
         {
             Writer.WriteLine (@"
@@ -35,13 +38,12 @@ namespace Vernacular.Generators
 //
 using System;
 using System.Collections.Generic;
-using Vernacular;
+using Vernacular;");
 
-namespace Catalog
-{
-    
-    public class Fr : ResourceCatalog
-    {
+            Writer.WriteLine("namespace {0}", Namespace);
+            Writer.WriteLine(@"{");
+            Writer.WriteLine("public class {0} : ResourceCatalog", ClassName);
+            Writer.WriteLine(@"{
         private static Dictionary<string, string> resources = new Dictionary<string, string>
         {");
             foreach (var resource_string in GetAllResourceStrings ()) {

@@ -52,6 +52,8 @@ namespace Vernacular.Tool
             LocalizationMetadata metadata = null;
             bool generate_pot = false;
             bool exclude_po_header = false;
+            string dict_namespace = null;
+            string dict_classname = null;
             bool analyze = false;
             bool analyzer_warn_as_error = false;
             bool log = false;
@@ -82,6 +84,8 @@ namespace Vernacular.Tool
                     "for preserving hand-maintained string resources", v => android_output_strings_xml = v },
                 { "pot", v => generate_pot = v != null },
                 { "exclude-po-header", v => exclude_po_header = v != null },
+                { "dict-namespace=", "Namespace for dict generator", v => dict_namespace = v },
+                { "dict-classname=", "Class name for dict generator", v => dict_classname = v },
                 { "l|log", "Display logging", v => log = v != null },
                 { "m|meta=", "Add localization metadata (key=value)", v => {
                     var parts = v.Split (new [] { '=' }, 2);
@@ -126,6 +130,15 @@ namespace Vernacular.Tool
                 if (generator is PoGenerator) {
                     ((PoGenerator)generator).PotMode = generate_pot;
                     ((PoGenerator)generator).ExcludeHeaderMetadata = exclude_po_header;
+                }
+
+                if (generator is DictionaryGenerator) {
+                    ((DictionaryGenerator) generator).Namespace = dict_namespace;
+                    ((DictionaryGenerator) generator).ClassName = dict_classname;
+                    if (string.IsNullOrEmpty (dict_namespace))
+                        throw new OptionException ("dict-namespace mandatory with dict generator", "dict-namespace");
+                    if (string.IsNullOrEmpty (dict_classname))
+                        throw new OptionException ("dict-classname mandatory with dict generator", "dict-classname");
                 }
 
                 if (reduce_master_path != null && reduce_retain_path == null) {
