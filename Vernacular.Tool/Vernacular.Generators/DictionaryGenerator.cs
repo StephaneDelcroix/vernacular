@@ -47,7 +47,7 @@ using Vernacular;");
         private static Dictionary<string, string> resources = new Dictionary<string, string>
         {");
             foreach (var resource_string in GetAllResourceStrings ()) {
-                Writer.WriteLine("{{\"{0}\", \"{1}\"}},", resource_string.Id, resource_string.Translated);                
+                Writer.WriteLine("{{\"{0}\", @\"{1}\"}},", resource_string.Id, resource_string.Translated.Replace("\"","\"\""));                
             }
             Writer.WriteLine (@"};
 
