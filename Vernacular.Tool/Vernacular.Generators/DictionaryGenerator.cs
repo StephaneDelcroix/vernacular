@@ -56,6 +56,11 @@ using Vernacular;");
             set { throw new InvalidOperationException (); }
         }
 
+        protected override string GetResource (string context, string message, LanguageGender gender = LanguageGender.Neutral, int pluralCount = 1)
+        {
+            return message == null ? null : base.GetResource (context, message, gender, pluralCount);
+        }
+
         private string GetResourceByIdImplementation (string id)
         {
             if (id == null) {
