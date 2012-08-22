@@ -62,6 +62,9 @@
     <Compile Include="..\Vernacular.Catalog\Vernacular\LanguageGender.cs">
       <Link>Vernacular\LanguageGender.cs</Link>
     </Compile>
+    <Compile Include="..\Vernacular.Catalog\Vernacular\MoCatalog.cs">
+      <Link>Vernacular\MoCatalog.cs</Link>
+    </Compile>
     <Compile Include="..\Vernacular.Catalog\Vernacular\PluralRules.cs">
       <Link>Vernacular\PluralRules.cs</Link>
     </Compile>
@@ -70,6 +73,15 @@
     </Compile>
     <Compile Include="..\Vernacular.Catalog\Vernacular\ResourceIdType.cs">
       <Link>Vernacular\ResourceIdType.cs</Link>
+    </Compile>
+    <Compile Include="..\Vernacular.Tool\Vernacular.Generators\ResourceString.cs">
+      <Link>Vernacular\ResourceString.cs</Link>
+    </Compile>
+    <Compile Include="..\Vernacular.Tool\Vernacular.Tool\ILocalizationUnit.cs">
+      <Link>Vernacular\ILocalizationUnit.cs</Link>
+    </Compile>
+    <Compile Include="..\Vernacular.Tool\Vernacular.Tool\LocalizedString.cs">
+      <Link>Vernacular\LocalizedString.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

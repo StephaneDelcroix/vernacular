@@ -44,11 +44,17 @@
     <Compile Include="..\Vernacular.Tool\Vernacular.Generators\AndroidGenerator.cs">
       <Link>Vernacular.Generators\AndroidGenerator.cs</Link>
     </Compile>
+    <Compile Include="..\Vernacular.Tool\Vernacular.Generators\BinaryGenerator.cs">
+      <Link>Vernacular.Generators\BinaryGenerator.cs</Link>
+    </Compile>
     <Compile Include="..\Vernacular.Tool\Vernacular.Generators\Generator.cs">
       <Link>Vernacular.Generators\Generator.cs</Link>
     </Compile>
     <Compile Include="..\Vernacular.Tool\Vernacular.Generators\IosGenerator.cs">
       <Link>Vernacular.Generators\IosGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\Vernacular.Tool\Vernacular.Generators\MoGenerator.cs">
+      <Link>Vernacular.Generators\MoGenerator.cs</Link>
     </Compile>
     <Compile Include="..\Vernacular.Tool\Vernacular.Generators\PoGenerator.cs">
       <Link>Vernacular.Generators\PoGenerator.cs</Link>
@@ -58,6 +64,9 @@
     </Compile>
     <Compile Include="..\Vernacular.Tool\Vernacular.Generators\ResxGenerator.cs">
       <Link>Vernacular.Generators\ResxGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\Vernacular.Tool\Vernacular.Generators\StreamGenerator.cs">
+      <Link>Vernacular.Generators\StreamGenerator.cs</Link>
     </Compile>
     <Compile Include="..\Vernacular.Tool\Vernacular.Parsers\AndroidResourceParser.cs">
       <Link>Vernacular.Parsers\AndroidResourceParser.cs</Link>
