@@ -64,39 +64,10 @@ namespace Vernacular.Generators
 
         public bool RetainStringOrder { get; set; }
 
-        protected TextWriter Writer { get; private set; }
 
-        protected virtual Encoding Encoding {
-            get { return Encoding.UTF8; }
-        }
 
         protected virtual ResourceIdType ResourceIdType {
             get { return ResourceIdType.ComprehensibleIdentifier; }
-        }
-
-        protected sealed class GeneratorWriter : StreamWriter
-        {
-            public GeneratorWriter (Stream stream, Encoding encoding)
-                : base (stream, encoding)
-            {
-                NewLine = "\n";
-            }
-        }
-
-        public void Generate (string path)
-        {
-            if (String.IsNullOrEmpty (path) || path == "-") {
-                Writer = Console.Out;
-            } else {
-                Writer = new GeneratorWriter (File.Create (path), Encoding);
-            }
-
-            try {
-                Generate ();
-            } finally {
-                Writer.Close ();
-                Writer = null;
-            }
         }
 
         public void Add (ILocalizationUnit localizationUnit, bool stripMetadata = false)
@@ -161,6 +132,8 @@ namespace Vernacular.Generators
         {
             return ResourceString.Generate (ResourceIdType, localizedString);
         }
+
+        public abstract void Generate(string path);
 
         protected abstract void Generate ();
 
