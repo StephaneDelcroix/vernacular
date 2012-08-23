@@ -59,8 +59,14 @@
     <Compile Include="..\Vernacular.Catalog\Vernacular\Catalog.cs">
       <Link>Vernacular\Catalog.cs</Link>
     </Compile>
+    <Compile Include="..\Vernacular.Catalog\Vernacular\ILocalizationUnit.cs">
+      <Link>Vernacular\ILocalizationUnit.cs</Link>
+    </Compile>
     <Compile Include="..\Vernacular.Catalog\Vernacular\LanguageGender.cs">
       <Link>Vernacular\LanguageGender.cs</Link>
+    </Compile>
+    <Compile Include="..\Vernacular.Catalog\Vernacular\LocalizedString.cs">
+      <Link>Vernacular\LocalizedString.cs</Link>
     </Compile>
     <Compile Include="..\Vernacular.Catalog\Vernacular\MoCatalog.cs">
       <Link>Vernacular\MoCatalog.cs</Link>
@@ -74,14 +80,8 @@
     <Compile Include="..\Vernacular.Catalog\Vernacular\ResourceIdType.cs">
       <Link>Vernacular\ResourceIdType.cs</Link>
     </Compile>
-    <Compile Include="..\Vernacular.Tool\Vernacular.Generators\ResourceString.cs">
+    <Compile Include="..\Vernacular.Catalog\Vernacular\ResourceString.cs">
       <Link>Vernacular\ResourceString.cs</Link>
-    </Compile>
-    <Compile Include="..\Vernacular.Tool\Vernacular.Tool\ILocalizationUnit.cs">
-      <Link>Vernacular\ILocalizationUnit.cs</Link>
-    </Compile>
-    <Compile Include="..\Vernacular.Tool\Vernacular.Tool\LocalizedString.cs">
-      <Link>Vernacular\LocalizedString.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

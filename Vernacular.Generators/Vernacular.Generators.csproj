@@ -41,6 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Vernacular.Catalog\Vernacular\ILocalizationUnit.cs">
+      <Link>Vernacular\ILocalizationUnit.cs</Link>
+    </Compile>
+    <Compile Include="..\Vernacular.Catalog\Vernacular\LocalizedString.cs">
+      <Link>Vernacular\LocalizedString.cs</Link>
+    </Compile>
+    <Compile Include="..\Vernacular.Catalog\Vernacular\ResourceString.cs">
+      <Link>Vernacular\ResourceString.cs</Link>
+    </Compile>
     <Compile Include="..\Vernacular.Tool\Vernacular.Generators\AndroidGenerator.cs">
       <Link>Vernacular.Generators\AndroidGenerator.cs</Link>
     </Compile>
@@ -59,9 +68,6 @@
     <Compile Include="..\Vernacular.Tool\Vernacular.Generators\PoGenerator.cs">
       <Link>Vernacular.Generators\PoGenerator.cs</Link>
     </Compile>
-    <Compile Include="..\Vernacular.Tool\Vernacular.Generators\ResourceString.cs">
-      <Link>Vernacular.Generators\ResourceString.cs</Link>
-    </Compile>
     <Compile Include="..\Vernacular.Tool\Vernacular.Generators\ResxGenerator.cs">
       <Link>Vernacular.Generators\ResxGenerator.cs</Link>
     </Compile>
@@ -77,14 +83,8 @@
     <Compile Include="..\Vernacular.Tool\Vernacular.Parsers\PoParser.cs">
       <Link>Vernacular.Parsers\PoParser.cs</Link>
     </Compile>
-    <Compile Include="..\Vernacular.Tool\Vernacular.Tool\ILocalizationUnit.cs">
-      <Link>Vernacular.Tool\ILocalizationUnit.cs</Link>
-    </Compile>
     <Compile Include="..\Vernacular.Tool\Vernacular.Tool\LocalizationMetadata.cs">
       <Link>Vernacular.Tool\LocalizationMetadata.cs</Link>
-    </Compile>
-    <Compile Include="..\Vernacular.Tool\Vernacular.Tool\LocalizedString.cs">
-      <Link>Vernacular.Tool\LocalizedString.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
