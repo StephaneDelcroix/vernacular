@@ -47,10 +47,11 @@ namespace Vernacular.Test
 
         public static List<ILocalizationUnit> ParseXap ()
         {
-            var aggregate_parser = new AggregateParser ();
+            var aggregate_parser = new AggregateParser();
             var xap_parser = new XapParser(aggregate_parser);
-            xap_parser.Add ("../../Xaps/XapStrings.xap");
-            return new List<ILocalizationUnit> (aggregate_parser.Parse ());
+            xap_parser.Add("../../Xaps/XapStrings.xap");
+            return new List<ILocalizationUnit>(aggregate_parser.Parse());
+        }
 
         public static List<ILocalizationUnit> ParsePo (string po_file)
         {
