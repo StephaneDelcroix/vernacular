@@ -41,15 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Vernacular.Catalog\Vernacular\ILocalizationUnit.cs">
-      <Link>Vernacular\ILocalizationUnit.cs</Link>
-    </Compile>
-    <Compile Include="..\Vernacular.Catalog\Vernacular\LocalizedString.cs">
-      <Link>Vernacular\LocalizedString.cs</Link>
-    </Compile>
-    <Compile Include="..\Vernacular.Catalog\Vernacular\ResourceString.cs">
-      <Link>Vernacular\ResourceString.cs</Link>
-    </Compile>
     <Compile Include="..\Vernacular.Tool\Vernacular.Generators\AndroidGenerator.cs">
       <Link>Vernacular.Generators\AndroidGenerator.cs</Link>
     </Compile>
