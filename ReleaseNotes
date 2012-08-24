@@ -1,0 +1,7 @@
+0.0.4 2012-08-24 <stephane.delcroix@mckinsey.com>
+=================================================
+ * XamlParser: fixes
+ * Catalog.Xaml: support for Tooltips
+ * Catalog.Xaml: support for custom DP mappings
+ * Tool: new mo generator
+ * Catalog: new mo catalog
