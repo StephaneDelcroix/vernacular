@@ -16,7 +16,7 @@
             <frameworkAssembly assemblyName="System.Windows.forms" targetFramework="" />
         </frameworkAssemblies>
 	<dependencies>
-	    <dependency id="Vernacular.Catalog" version="DEPENDENCY_VERSION"/>
+	    <dependency id="Vernacular.Catalog" version="$GlobalPackageVersion$"/>
 	</dependencies>
     </metadata>
     <files>
