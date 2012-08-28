@@ -78,12 +78,6 @@ namespace Vernacular.Test
             AssertUnits (ParseXap ());
         }
 
-        [Test]
-        public void TestParseXap ()
-        {
-            AssertUnits (ParseXap ());
-        }
-
         private void AssertUnits (List<ILocalizationUnit> units)
         {
             Assert.IsTrue (units.Any ());
