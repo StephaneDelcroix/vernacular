@@ -1,3 +1,8 @@
+0.0.5 2012-08-29 <stephane.delcroix@mckinsey.com>
+=================================================
+ * ResxParser: new parser for resx
+ * Add implementation paramete to all Get*String
+
 0.0.4 2012-08-24 <stephane.delcroix@mckinsey.com>
 =================================================
  * XamlParser: fixes
