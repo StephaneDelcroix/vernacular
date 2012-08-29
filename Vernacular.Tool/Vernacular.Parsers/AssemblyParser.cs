@@ -267,6 +267,8 @@ namespace Vernacular.Parsers
                     }
 
                     Log ("  | [{0}]: {1}", param.Name, instruction);
+                } if (param.ParameterType.FullName == "Vernacular.Catalog" && i>0) {
+                    i--;
                 }
             }
 
