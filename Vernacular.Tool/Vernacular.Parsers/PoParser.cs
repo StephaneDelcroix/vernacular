@@ -59,7 +59,7 @@ namespace Vernacular.Parsers
 
         public override void Add (Stream stream, string path)
         {
-            throw new NotSupportedException ();
+            Log ("PoParser.Add(Stream, string) Not Supported");
         }
 
         private ILocalizationUnit Parse (IDocumentPart part)

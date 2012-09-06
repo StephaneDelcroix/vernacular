@@ -53,7 +53,7 @@ namespace Vernacular.Parsers
 
         public override void Add(Stream stream, string path)
         {
-            throw new NotSupportedException();
+            Log ("ResxParser.Add(Stream, string) Not Supported");
         }
 
         public override IEnumerable<ILocalizationUnit> Parse ()

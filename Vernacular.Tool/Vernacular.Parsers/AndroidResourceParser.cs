@@ -55,7 +55,7 @@ namespace Vernacular.Parsers
 
         public override void Add (Stream stream, string path)
         {
-            throw new NotSupportedException ();
+            Log("AndroidResourceParser.Add(Stream, string) Not Supported");
         }
 
         private static string DecodeElement (XElement element)

@@ -82,7 +82,7 @@ namespace Vernacular.Parsers
 
         public override void Add (Stream stream, string path)
         {
-            throw new NotSupportedException ();
+            Log ("XapParser.Add(Stream, string) Not Supported");
         }
 
         public override IEnumerable<ILocalizationUnit> Parse ()
