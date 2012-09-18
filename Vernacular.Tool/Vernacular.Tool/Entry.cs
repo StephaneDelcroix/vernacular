@@ -27,7 +27,7 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-
+using System.Linq;
 using Mono.Options;
 
 using Vernacular.Parsers;
@@ -50,6 +50,7 @@ namespace Vernacular.Tool
             string android_output_strings_xml = null;
             string analyer_config_path = null;
             string initWithLocale = null;
+            string resx_template_path = null;
             LocalizationMetadata metadata = null;
             bool generate_pot = false;
             bool exclude_po_header = false;
@@ -82,6 +83,7 @@ namespace Vernacular.Tool
                 { "android-output-strings-xml=", "Output file of localized Android Strings.xml " +
                     "for preserving hand-maintained string resources", v => android_output_strings_xml = v },
                 { "init-with-locale=", "Init a .po file for the locale", v => initWithLocale = v},
+                { "resx-template=", "Use Ids from the resx template", v => resx_template_path = v},
                 { "pot", v => generate_pot = v != null },
                 { "exclude-po-header", v => exclude_po_header = v != null },
                 { "l|log", "Display logging", v => log = v != null },
@@ -159,6 +161,14 @@ namespace Vernacular.Tool
 
                     return 0;
                 }
+
+                if (resx_template_path != null && !(generator is ResxGenerator)) {
+                    throw new OptionException ("resx-template require the generator to be resx", "resx-template");
+                }
+
+                if(resx_template_path != null) {
+                    ResourceString.UseNamesAsIds = true;
+                }
             } catch (OptionException e) {
                 Console.WriteLine ("vernacular: {0}", e.Message);
                 Console.WriteLine ("Try `vernacular --help` for more information.");
@@ -211,10 +221,28 @@ namespace Vernacular.Tool
                 generator.Add (metadata);
             }
 
+            List<ILocalizationUnit> id_replacements = null;
+            if (resx_template_path != null) {
+                var resx_template_parser = new ResxParser ();
+                resx_template_parser.Add (resx_template_path);
+                id_replacements = resx_template_parser.Parse().ToList();
+            }
+
             foreach (var localization_unit in parser.Parse ()) {
+                var localized_string = localization_unit as LocalizedString;
+                if (id_replacements != null && localized_string!=null)
+                {
+                    var replacement = (from lu in id_replacements
+                                       where
+                                           (lu as LocalizedString).UntranslatedSingularValue ==
+                                           localized_string.UntranslatedSingularValue
+                                       select lu).FirstOrDefault();
+                    if (replacement == null)
+                        continue;
+                    localized_string.Name = (replacement as LocalizedString).Name;                    
+                }
                 generator.Add (localization_unit);
 
-                var localized_string = localization_unit as LocalizedString;
                 if (analyzer != null) {
                     analyzer.Add (localized_string);
                 }

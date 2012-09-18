@@ -36,6 +36,8 @@ namespace Vernacular
         public string Untranslated { get; set; }
         public string Translated { get; set; }
 
+        public static bool UseNamesAsIds { get; set; }
+
         public string SortKey {
             get {
                 // We want to chop off the Vernacular_P0_M_ style
@@ -44,6 +46,8 @@ namespace Vernacular
             }
         }
 
+
+        
         public static IEnumerable<ResourceString> Generate (ResourceIdType resourceIdType, LocalizedString localizedString)
         {
             string [] translated;
@@ -63,13 +67,16 @@ namespace Vernacular
                     continue;
                 }
 
-                yield return new ResourceString {
-                    Id = Catalog.GetResourceId (resourceIdType,
-                        localizedString.Context, localizedString.UntranslatedSingularValue,
-                        localizedString.Gender, i),
-                    Untranslated = localizedString.UntranslatedSingularValue,
-                    Translated = translated [i]
-                };
+                yield return new ResourceString
+                                 {
+                                     Id = UseNamesAsIds
+                                             ? localizedString.Name
+                                             : Catalog.GetResourceId(resourceIdType, localizedString.Context,
+                                                                     localizedString.UntranslatedSingularValue,
+                                                                     localizedString.Gender, i),
+                                     Untranslated = localizedString.UntranslatedSingularValue,
+                                     Translated = translated[i]
+                                 };
             }
         }
     }
