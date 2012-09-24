@@ -204,6 +204,12 @@ namespace Vernacular.Xaml
             } else if (e is ListPicker) {
                 return ListPicker.HeaderProperty;
 #endif
+#if WPF
+            } else if (e is DataGridColumn) {
+                return DataGridColumn.HeaderProperty;
+            } else if (e is Window) {
+                return Window.TitleProperty;
+#endif
             } else if (e is ContentControl) {
                 return ContentControl.ContentProperty;
             } else if (e is TextBox) {
