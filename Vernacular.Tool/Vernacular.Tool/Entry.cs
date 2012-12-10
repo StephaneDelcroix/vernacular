@@ -46,6 +46,7 @@ namespace Vernacular.Tool
             string source_root_path = null;
             string reduce_master_path = null;
             string reduce_retain_path = null;
+            string reduce_keep_metadata = null;
             string android_input_strings_xml = null;
             string android_output_strings_xml = null;
             string analyer_config_path = null;
@@ -76,6 +77,7 @@ namespace Vernacular.Tool
                     "keeping only strings defined by another unlocalized PO[T] file", v => reduce_master_path = v },
                 { "reduce-retain=", "An unlocalized PO[T] file used to " +
                     "determine which strings from reduce-master should be retained", v => reduce_retain_path = v },
+                { "reduce-keep-metadata-from=", "while reducing, keep metadata from none|master|retain|both. Default is none", v => reduce_keep_metadata = v},
                 { "android-input-strings-xml=", "Input file of unlocalized Android Strings.xml " +
                     "for preserving hand-maintained string resources", v => android_input_strings_xml = v },
                 { "android-output-strings-xml=", "Output file of localized Android Strings.xml " +
@@ -135,11 +137,28 @@ namespace Vernacular.Tool
                 } else if (reduce_master_path != null && reduce_retain_path != null) {
                     var reduce_master = new PoParser { SourceRootPath = source_root_path };
                     var reduce_retain = new PoParser { SourceRootPath = source_root_path };
+                    Generator.ReduceKeepMetadata keep_meta;
+                    switch (reduce_keep_metadata)
+                    {
+                        case "both":
+                            keep_meta = Generator.ReduceKeepMetadata.Merge;
+                            break;
+                        case "master":
+                            keep_meta = Generator.ReduceKeepMetadata.FromMaster;
+                            break;
+                        case "retain":
+                            keep_meta = Generator.ReduceKeepMetadata.FromSub;
+                            break;
+                        default:
+                            keep_meta = Generator.ReduceKeepMetadata.None;
+                            break;
+                    }
+
 
                     reduce_master.Add (reduce_master_path);
                     reduce_retain.Add (reduce_retain_path);
 
-                    generator.Reduce (reduce_master, reduce_retain);
+                    generator.Reduce (reduce_master, reduce_retain, keep_meta);
 
                     generator.Generate (output_path);
 

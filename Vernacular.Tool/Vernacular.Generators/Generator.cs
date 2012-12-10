@@ -164,12 +164,23 @@ namespace Vernacular.Generators
 
         protected abstract void Generate ();
 
-        public void Reduce (Parser masterSet, Parser subSet)
+        public enum ReduceKeepMetadata
         {
+            None,
+            FromMaster,
+            FromSub,
+            Merge
+        }
+
+        public void Reduce (Parser masterSet, Parser subSet, ReduceKeepMetadata keepMetadata = ReduceKeepMetadata.None)
+        {
+            var stripSub = keepMetadata == ReduceKeepMetadata.None || keepMetadata == ReduceKeepMetadata.FromMaster;
+            var stripMaster = keepMetadata == ReduceKeepMetadata.None || keepMetadata == ReduceKeepMetadata.FromSub;
+
             foreach (var localization_unit in subSet.Parse ()) {
                 var localized_string = localization_unit as LocalizedString;
                 if (localized_string != null) {
-                    Add (localized_string, stripMetadata: true);
+                    Add (localized_string, stripMetadata: stripSub);
                 }
             }
 
@@ -178,7 +189,10 @@ namespace Vernacular.Generators
                 var localization_metadata = localization_unit as LocalizationMetadata;
 
                 if (localized_string != null) {
-                    Merge (localized_string, stripMetadata: true);
+                    if (stripMaster) {
+                        localized_string.StripMetadata();
+                    }
+                    Merge (localized_string, stripMetadata: keepMetadata == ReduceKeepMetadata.None);
                 } else if (localization_metadata != null) {
                     Add (localization_metadata);
                 }
