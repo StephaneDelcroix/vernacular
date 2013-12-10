@@ -35,9 +35,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
-    <Reference Include="Xamarin.QuickUI.Core.iOS">
-      <HintPath>..\packages\Xamarin.QuickUI.Core.iOS.1.0.248\lib\MonoTouch10\Xamarin.QuickUI.Core.iOS.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -87,5 +84,11 @@
     <Compile Include="Vernacular.Xaml\Catalog.cs">
       <Link>Vernacular.Xaml\Catalog.cs</Link>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Duplo\Xamarin.QuickUI.Core.iOS\Xamarin.QuickUI.Core.iOS.csproj">
+      <Project>{E6838CB4-2F08-4D27-9B3F-696183131155}</Project>
+      <Name>Xamarin.QuickUI.Core.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

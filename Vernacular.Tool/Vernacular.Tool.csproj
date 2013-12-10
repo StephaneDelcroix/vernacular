@@ -35,8 +35,8 @@
     <WarningLevel>4</WarningLevel>
     <Externalconsole>True</Externalconsole>
     <NoWarn>1685</NoWarn>
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Commandlineparameters>-i /Users/sdx/Projects/QuickUIDemo/QuickUIDemo.IOS/bin/iPhoneSimulator/Debug -g po -v -l</Commandlineparameters>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
     <DebugSymbols>True</DebugSymbols>
@@ -119,6 +119,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Vernacular.Catalog\Vernacular.Catalog.csproj">
       <Project>{BEC7B55D-F922-446D-9BBF-12DB249C4CA4}</Project>
@@ -129,5 +130,4 @@
       <Name>Vernacular.Potato</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

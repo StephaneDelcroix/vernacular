@@ -305,7 +305,9 @@ namespace Vernacular.Xaml
             return Entry.TextProperty;
         } else if (e is Page) {
             return Page.TitleProperty;
-        }
+		} else if (e is Button) {
+			return Button.TextProperty;
+		}
 #endif
 
             return null;
