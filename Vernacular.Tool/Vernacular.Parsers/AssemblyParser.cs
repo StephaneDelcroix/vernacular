@@ -80,7 +80,7 @@ namespace Vernacular.Parsers
             }
 
             foreach (var resource in from res in module.Resources
-				where res.ResourceType == ResourceType.Embedded && (Path.GetExtension(res.Name) == ".resources" || Path.GetExtension(res.Name) == ".xaml")
+				where res.ResourceType == ResourceType.Embedded
                 select res as EmbeddedResource) {
                 AddResource (resource);
             }
@@ -103,7 +103,7 @@ namespace Vernacular.Parsers
 						}
 					}        
 				}
-			} else if (Path.GetExtension (resource.Name) == ".xaml" && embedded_resource_parser.SupportedFileExtensions.Contains (Path.GetExtension(resource.Name))) {			
+			} else if (embedded_resource_parser.SupportedFileExtensions.Contains (Path.GetExtension(resource.Name))) {			
 				embedded_resource_parser.Add (resource.GetResourceStream (), resource.Name);
 			}
         }
