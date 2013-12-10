@@ -26,19 +26,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#if WINDOWS_PHONE || SILVERLIGHT
+
+#if WINDOWS_PHONE || SILVERLIGHT || QUICKUI
 
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 
+#if !QUICKUI
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+#endif
 
 #if WINDOWS_PHONE
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+#endif
+
+#if QUICKUI
+using Xamarin.QuickUI;
+
+using DependencyProperty = Xamarin.QuickUI.BindableProperty;
+using DependencyObject = Xamarin.QuickUI.BindableObject;
+using DependencyPropertyChangedEventArgs = System.ComponentModel.PropertyChangedEventArgs;
 #endif
 
 namespace Vernacular.Xaml
@@ -50,7 +61,7 @@ namespace Vernacular.Xaml
         Uppercase
     }
 
-    public static class Catalog
+    public class Catalog
     {
         static Catalog ()
         {
@@ -71,6 +82,7 @@ namespace Vernacular.Xaml
         /// </summary>
         public static IDictionary<Type, DependencyProperty> MessageDependencyPropertyMap { get; private set; }
 
+        #if !QUICKUI
         public static readonly DependencyProperty CommentProperty = DependencyProperty.RegisterAttached (
             "Comment",
             typeof (string),
@@ -150,6 +162,76 @@ namespace Vernacular.Xaml
         {
             o.SetValue (ModifierProperty, value);
         }
+        #else
+        public static readonly BindableProperty CommentProperty = 
+            BindableProperty.CreateAttached<Catalog, string> (bindable => GetComment (bindable), default(string));
+
+        public static string GetComment (BindableObject bindable)
+        {
+            return (string)bindable.GetValue (CommentProperty);
+        }
+
+        public static void SetComment (BindableObject bindable, string value)
+        {
+            bindable.SetValue (CommentProperty, value);
+        }
+
+        public static readonly BindableProperty MessageProperty = 
+            BindableProperty.CreateAttached<Catalog, string> (bindable => GetMessage (bindable), default(string), 
+                bindingPropertyChanged: (bindable, oldValue, newValue) => OnPropertyChanged (bindable, null));
+
+        public static string GetMessage (BindableObject bindable)
+        {
+            return (string)bindable.GetValue (MessageProperty);
+        }
+
+        public static void SetMessage (BindableObject bindable, string value)
+        {
+            bindable.SetValue (MessageProperty, value);
+        }
+
+        public static readonly BindableProperty PluralMessageProperty = 
+            BindableProperty.CreateAttached<Catalog, string> (bindable => GetPluralMessage (bindable), default(string), 
+                bindingPropertyChanged: (bindable, oldValue, newValue) => OnPropertyChanged (bindable, null));
+
+        public static string GetPluralMessage (BindableObject bindable)
+        {
+            return (string)bindable.GetValue (PluralMessageProperty);
+        }
+
+        public static void SetPluralMessage (BindableObject bindable, string value)
+        {
+            bindable.SetValue (PluralMessageProperty, value);
+        }
+
+        public static readonly BindableProperty PluralCountProperty = 
+            BindableProperty.CreateAttached<Catalog, int> (bindable => GetPluralCount (bindable), 1, 
+                bindingPropertyChanged: (bindable, oldValue, newValue) => OnPropertyChanged (bindable, null));
+
+        public static int GetPluralCount (BindableObject bindable)
+        {
+            return (int)bindable.GetValue (PluralCountProperty);
+        }
+
+        public static void SetPluralCount (BindableObject bindable, int value)
+        {
+            bindable.SetValue (PluralCountProperty, value);
+        }
+
+        public static readonly BindableProperty ModifierProperty = 
+            BindableProperty.CreateAttached<Catalog, StringModifier> (bindable => GetModifier (bindable), StringModifier.None, 
+                bindingPropertyChanged: (bindable, oldValue, newValue) => OnPropertyChanged (bindable, null));
+
+        public static StringModifier GetModifier (BindableObject bindable)
+        {
+            return (StringModifier)bindable.GetValue (ModifierProperty);
+        }
+
+        public static void SetModifier (BindableObject bindable, StringModifier value)
+        {
+            bindable.SetValue (ModifierProperty, value);
+        }
+        #endif
 
         private static void OnPropertyChanged (DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
@@ -173,9 +255,12 @@ namespace Vernacular.Xaml
             var property = FindMessageProperty (sender);
             if (property != null) {
                 sender.SetValue (property, localized);
-            } else if (sender is Run) {
+            }
+            #if !QUICKUI
+            else if (sender is Run) {
                 (sender as Run).Text = localized;
             }
+            #endif
         }
 
         private static DependencyProperty FindMessageProperty (DependencyObject e)
@@ -191,7 +276,7 @@ namespace Vernacular.Xaml
             if (MessageDependencyPropertyMap.TryGetValue (e.GetType (), out property)) {
                 return property;
             }
-
+#if !QUICKUI
             if (e is TextBlock) {
                 return TextBlock.TextProperty;
 #if WINDOWS_PHONE
@@ -205,18 +290,28 @@ namespace Vernacular.Xaml
                 return ListPicker.HeaderProperty;
 #endif
 #if SILVERLIGHT
-	    } else if (e is TabItem) {
-		return TabItem.HeaderProperty;
+	        } else if (e is TabItem) {
+		    return TabItem.HeaderProperty;
 #endif
             } else if (e is ContentControl) {
                 return ContentControl.ContentProperty;
             } else if (e is TextBox) {
                 return TextBox.TextProperty;
             }
+#else
+        if (e is Label) {
+            return Label.TextProperty;
+        } else if (e is Entry) {
+            return Entry.TextProperty;
+        } else if (e is Page) {
+            return Page.TitleProperty;
+        }
+#endif
 
             return null;
         }
 
+#if !QUICKUI
         public static readonly DependencyProperty ToolTipProperty = DependencyProperty.RegisterAttached(
             "ToolTip",
             typeof (string),
@@ -246,6 +341,7 @@ namespace Vernacular.Xaml
             var localized = Vernacular.Catalog.GetString (tooltip);
             ToolTipService.SetToolTip (framework_element, localized);
         }
+#endif
 
         private static string ModifyString (string value, string modifier)
         {
